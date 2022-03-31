@@ -9,5 +9,11 @@ namespace PCStore.Infrastrucure.Data
             : base(options)
         {
         }
+
+        public DbSet<Computer> Computers { get; set; }
+
+        public DbSet<Laptop> Laptops { get; set; }
+
+        public DbSet<Display> Displays { get; set; }
     }
 }
