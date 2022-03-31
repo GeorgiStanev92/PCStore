@@ -2,7 +2,7 @@
 {
     public class LaptopOrder
     {
-        public string LaptopId { get; set; }
+        public string Barcode { get; set; }
 
         public int Count { get; set; }
     }

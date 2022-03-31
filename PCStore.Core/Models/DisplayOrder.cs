@@ -2,7 +2,7 @@
 {
     public class DisplayOrder
     {
-        public string DisplayId { get; set; }
+        public string Barcode { get; set; }
 
         public int Count { get; set; }
     }
