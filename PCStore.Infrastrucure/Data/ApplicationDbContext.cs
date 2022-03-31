@@ -10,10 +10,25 @@ namespace PCStore.Infrastrucure.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Contragent>()
+                .HasIndex(c => c.CustomerNumber)
+                .IsUnique();
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<Computer> Computers { get; set; }
 
         public DbSet<Laptop> Laptops { get; set; }
 
         public DbSet<Display> Displays { get; set; }
+
+        public DbSet<Deal> Deals { get; set; }
+
+        public DbSet<Contragent> Contragents { get; set; }
+
+        public DbSet<DealSubject> DealSubjects { get; set; }
     }
 }
