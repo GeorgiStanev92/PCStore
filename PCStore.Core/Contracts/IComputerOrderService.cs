@@ -2,7 +2,7 @@
 
 namespace PCStore.Core.Contracts
 {
-    public interface IOrderService
+    public interface IComputerOrderService
     {
         Task PlaceOrder(CustomerOrder order);
     }
