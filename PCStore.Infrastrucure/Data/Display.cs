@@ -33,6 +33,8 @@ namespace PCStore.Infrastrucure.Data
         [Column(TypeName = "date")]
         public DateTime DateFrom { get; set; } = DateTime.Today;
 
+        public int ItemsCount { get; set; } = 0;
+
         [Column(TypeName = "date")]
         public DateTime? DateTo { get; set; }
 

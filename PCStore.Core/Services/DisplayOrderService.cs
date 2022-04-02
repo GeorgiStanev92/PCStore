@@ -6,11 +6,11 @@ using PCStore.Infrastrucure.Repositories;
 
 namespace PCStore.Core.Services
 {
-    public class LaptopOrderService : IOrderService
+    public class DisplayOrderService : IOrderService
     {
         private readonly IApplicatioDbRepository repo;
 
-        public LaptopOrderService(IApplicatioDbRepository _repo)
+        public DisplayOrderService(IApplicatioDbRepository _repo)
         {
             repo = _repo;
         }
@@ -30,14 +30,14 @@ namespace PCStore.Core.Services
                 .Select(c => c.Barcode)
                 .ToArray();
 
-            var laptops = await repo.All<Laptop>()
+            var displays = await repo.All<Display>()
                 .Where(i => barcode.Contains(i.Barcode))
                 .ToDictionaryAsync(c => c.Barcode, c => c.ItemsCount);
 
-            foreach (var laptop in order.Computers)
+            foreach (var display in order.Computers)
             {
-                if (!laptops.ContainsKey(laptop.Barcode) ||
-                    laptop.Count > laptops[laptop.Barcode])
+                if (!displays.ContainsKey(display.Barcode) ||
+                    display.Count > displays[display.Barcode])
                 {
                     throw new ArgumentException("Not enough quantity");
                 }
