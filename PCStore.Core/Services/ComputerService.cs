@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PCStore.Core.Contracts;
-using PCStore.Core.Models;
+﻿using PCStore.Core.Contracts;
 using PCStore.Infrastrucure.Data;
 using PCStore.Infrastrucure.Repositories;
 
