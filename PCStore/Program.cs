@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PCStore.Core.Contracts;
+using PCStore.Core.Services;
 using PCStore.Infrastrucure.Data;
 using PCStore.Infrastrucure.Repositories;
 
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>();
+builder.Services.AddScoped<IComputerService, ComputerService>();
+builder.Services.AddScoped<ILaptopService, LaptopService>();
+builder.Services.AddScoped<IDisplayService, DisplayService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
