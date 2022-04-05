@@ -17,6 +17,7 @@ builder.Services.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>();
 builder.Services.AddScoped<IComputerService, ComputerService>();
 builder.Services.AddScoped<ILaptopService, LaptopService>();
 builder.Services.AddScoped<IDisplayService, DisplayService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
