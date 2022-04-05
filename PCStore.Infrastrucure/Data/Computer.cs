@@ -56,5 +56,7 @@ namespace PCStore.Infrastrucure.Data
 
         [StringLength(200)]
         public string? Description { get; set; }
+
+        public virtual User Seller { get; set; }
     }
 }
