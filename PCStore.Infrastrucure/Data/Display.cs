@@ -9,37 +9,43 @@ namespace PCStore.Infrastrucure.Data
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        [StringLength(30)]
-        public string Barcode { get; set; }
+        [Range(1d, 19d)]
+        public double Size { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required] //800x600
+        [MaxLength(9)] //1920x1024        
         public string Resolution { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [MaxLength(5)]
         public string Type { get; set; }
 
         [Required]
-        [Range(128000d, 18000000d)]
+        [Range(256000d, 17000000d)]
         public double Colors { get; set; }
 
         [Required]
         [Range(1, 10000)]
-        [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
         [Required]
-        [Column(TypeName = "date")]
-        public DateTime DateFrom { get; set; } = DateTime.Today;
+        [MaxLength(12)]
+        public string SellerPhone { get; set; }
 
-        public int ItemsCount { get; set; } = 0;
+        [Required]
+        [MaxLength(500)]
+        public string Description { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? DateTo { get; set; }
+        public bool IsDeleted { get; set; }
 
-        [StringLength(500)]
-        public string? Description { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime? DeletedOn { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedOn { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? ModifiedOn { get; set; }
 
         public virtual User Seller { get; set; }
     }

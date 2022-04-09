@@ -8,9 +8,7 @@ namespace PCStore.Infrastrucure.Data
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Required]
-        [StringLength(30)]
-        public string Barcode { get; set; }
+        
 
         [Required]
         [StringLength(30)]
@@ -18,44 +16,58 @@ namespace PCStore.Infrastrucure.Data
 
         [Required]
         [Range(1d, 5d)]
-        public double CPUSpeed { get; set; }
+        public double CpuSpeed { get; set; }
 
         [Required]
-        [Range(1, 128)]
+        [Range(1, 64)]
         public int RAM { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string RAMType { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string GPU { get; set; }
-
-        [Required]
-        [Range(1, 12)]
-        public int GPUMemory { get; set; }
+        [MaxLength(10)]
+        public string RamType { get; set; }
 
         [Required]
         [Range(1, 2000)]
         public int HDD { get; set; }
 
         [Required]
+        [MaxLength(30)]
+        public string GPU { get; set; }
+
+        [Required]
+        [Range(1, 8)]
+        public int GpuMemory { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        public string OpticalDevice { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public string OperatingSystem { get; set; }
+
+        [Required]
         [Range(1, 10000)]
-        [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
         [Required]
-        [Column(TypeName = "date")]
-        public DateTime DateFrom { get; set; } = DateTime.Today;
+        [MaxLength(12)]
+        public string SellerPhone { get; set; }
 
-        public int ItemsCount { get; set; } = 0;
+        [Required]
+        [MaxLength(500)]
+        public string Description { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? DateTo { get; set; }
+        public bool IsDeleted { get; set; }
 
-        [StringLength(200)]
-        public string? Description { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime? DeletedOn { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? CreatedOn { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? ModifiedOn { get; set; }
 
         public virtual User Seller { get; set; }
     }
