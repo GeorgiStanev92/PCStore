@@ -1,11 +1,6 @@
 ﻿using PCStore.Core.Map;
 using PCStore.Infrastrucure.Data;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PCStore.Core.Models.Manage
 {
