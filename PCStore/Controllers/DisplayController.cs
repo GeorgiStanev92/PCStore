@@ -15,11 +15,11 @@ namespace PCStore.Controllers
         private readonly IUsersService usersService;
 
         public DisplayController(IMapper _mapper,
-            IUsersService usersService,
+            IUsersService _usersService,
             IDisplayService _displayService)
         {
             mapper = _mapper;
-            usersService = usersService;
+            usersService = _usersService;
             displayService = _displayService;
         }
 
@@ -38,7 +38,7 @@ namespace PCStore.Controllers
         {
             var user = usersService.GetAll().Single();
 
-            model.DateFrom = DateTime.Now;
+            model.CreatedOn = DateTime.Now;
             model.Seller = user;
             displayService.Add(model);
 

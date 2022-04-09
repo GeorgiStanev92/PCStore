@@ -3,7 +3,6 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PCStore.Core.Contracts;
-using PCStore.Core.Models;
 using PCStore.Core.Models.Device;
 using PCStore.Infrastrucure.Data;
 
@@ -31,7 +30,7 @@ namespace PCStore.Controllers
 
             var computers = this.computersService
                 .GetAll()
-                .OrderByDescending(x => x.DateFrom)
+                .OrderByDescending(x => x.ModifiedOn)
                 .ProjectTo<ComputerViewModel>()
                 .ToList();
 
@@ -73,7 +72,7 @@ namespace PCStore.Controllers
 
             var user = usersService.GetAll().Single();
 
-            model.DateFrom = DateTime.Now;
+            model.CreatedOn = DateTime.Now;
             model.Seller = user;
             this.computersService.Add(model);
 

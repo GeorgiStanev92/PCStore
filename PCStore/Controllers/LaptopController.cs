@@ -31,7 +31,7 @@ namespace PCStore.Controllers
 
             var laptops = laptopService
                .GetAll()
-               .OrderByDescending(x => x.DateFrom)
+               .OrderByDescending(x => x.ModifiedOn)
                .ProjectTo<LaptopViewModel>()
                .ToList();
 
@@ -72,7 +72,7 @@ namespace PCStore.Controllers
         {
             var user = usersService.GetAll().Single();
 
-            model.DateFrom = DateTime.Now;
+            model.CreatedOn = DateTime.Now;
             model.Seller = user;
             this.laptopService.Add(model);
 
