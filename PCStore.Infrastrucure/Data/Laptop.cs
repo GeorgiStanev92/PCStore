@@ -61,20 +61,16 @@ namespace PCStore.Infrastrucure.Data
         public decimal Price { get; set; }
 
         [Required]
+        [MinLength(8)]
         [MaxLength(12)]
         public string SellerPhone { get; set; }
 
         [Required]
-        [Column(TypeName = "date")]
-        public DateTime DateFrom { get; set; } = DateTime.Today;
+        [MinLength(1)]
+        [MaxLength(500)]
+        public string Description { get; set; }
 
-        public int ItemsCount { get; set; } = 0;
-
-        [Column(TypeName = "date")]
-        public DateTime? DateTo { get; set; }
-
-        [StringLength(500)]
-        public string? Description { get; set; }
+        public virtual User Seller { get; set; }
 
         public bool IsDeleted { get; set; }
 
@@ -86,7 +82,5 @@ namespace PCStore.Infrastrucure.Data
 
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
-
-        public virtual User Seller { get; set; }
     }
 }
